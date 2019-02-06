@@ -1,68 +1,96 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Olufy Tech Internship - Frontend Quest (From Appman)
 
-## Available Scripts
+## Prerequirest
 
-In the project directory, you can run:
+- Node v8+
+- Git
 
-### `npm start`
+## Setup Exam
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```
+$ git clone https://github.com/olufy-house/olufy-tech-internship-frontend.git
+$ cd olufy-tech-internship-frontend
+$ npm / yarn install
+```
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## I. ออกแบบ UI และ Layout
 
-### `npm test`
+![](screenshots/ui-layout.gif)
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+$ npm run client / yarn client // open localhost:8080
+```
 
-### `npm run build`
+- Label
+- Logo
+  - ใช้ไฟล์ logo.svg
+  - ขนาดกว้าง 180px
+- Whiteframe
+- Text Input
+  - มีขอบโค้ง 1rem
+  - เมื่อมีการ Focus จะมีขอบสี #242526
+- Button
+  - สีของปุ่มใช้สี deepskyblue
+  - มีขอบโค้ง 5px
+- Tag A
+  - เมื่อนำเม้าส์ Hover จะมีเส้นใต้ตัวอักษร
+  - ตัวอักษรใช้สี deepskyblue
+- Background
+  - สีพื้นหลัง ghostwhite
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## II. UI Component & Service
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+Run คำสั่ง
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+$ npm run server / yarn server
+```
 
-### `npm run eject`
+แก้ไข Code ในข้อ 1 โดยทำการยิง Request ไปที่
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+[POST] http://localhost:3000/api/login
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```json
+{
+  "email": String,
+  "password": String
+}
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+\*\*\* email และ password ที่ถูกต้องคือ
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```json
+{
+  "email": "example@olufy.com",
+  "password": "password"
+}
+```
 
-## Learn More
+ระหว่างการรอ response จาก server ให้ทำการแสดงถึงการ wating ด้วยการ หมุนโลโก้ react โดยมี class logo-spin เตรียมไว้แล้ว
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+หากได้รับ http code 200 ให้แสดง Alert และแสดงข้อความว่า Login Successed
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+หากได้รับ http code 40x ให้แสดงผลลัพท์ดังภาพ
 
-### Code Splitting
+ทุกครั้งที่มีการ submit form ให้ทำการเคลียร์ error label
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+![](screenshots/login-error.png)
 
-### Analyzing the Bundle Size
+## หลักการประเมิน (100 คะแนน)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+1. ออกแบบ UI & Layout
 
-### Making a Progressive Web App
+- วิธีการ render html และการ manipulate DOM (10 คะแนน)
+- ความถูกต้องตามโจทย์ (20 คะแนน)
+- การเขียน style CSS (20 คะแนน)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+2. UI Component & Service
 
-### Advanced Configuration
+- การใช้งาน react component, state, props (30 คะแนน)
+- การเรียกใช้ service และการ handle (20 คะแนน)
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+3. JS & Unit Test (ไม่ต้องทำก็ได้)
 
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Pass 5 cases
+- Logic
+- Code style
